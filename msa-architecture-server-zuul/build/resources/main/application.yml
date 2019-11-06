@@ -1,0 +1,51 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: msa-architecture-server-zuul
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: 'msa-architecture-server-config'
+
+#Eureka Client   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
+    enabled: true
+  instance:
+    preferIpAddress: true
+    instance-id:
+
+zuul:
+  ignoredServices: '*'
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  sensitive-headers:
+  routes:
+    member:
+      path: /api/v1/member/**
+      serviceId: msa-service-coffee-member
+      strip-prefix: false
+    order:
+      path: /api/v1/order/**
+      serviceId: msa-service-coffee-order
+      strip-prefix: false
+    status:
+      path: /api/v1/status/**
+      serviceId: msa-service-coffee-status
+      strip-prefix: false
+  retryable: true
+  host:
+    connect-timeout-millis: 6000
+    socket-timeout-millis: 6000
+
+logging:
+  path: logs
+  level:
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+    com.hoony.msa.zuul.system: DEBUG
+    com.hoony.msa.zuul.springboot: DEBUG

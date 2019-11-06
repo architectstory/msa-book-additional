@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: msa-architecture-server-config
+  cloud:
+    config:
+      server:
+        git:
+          #uri: https://github.com/architectstory/msa.git
+          uri: file://D:\msa-architecture-server-config-git-repository
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/, http://localhost:9092/eureka/
+    enabled: true
+  instance:
+    preferIpAddress: true
+    instance-id:

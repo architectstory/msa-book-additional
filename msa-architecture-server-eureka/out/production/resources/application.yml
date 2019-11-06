@@ -1,0 +1,15 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: msa-architecture-server-eureka
+      
+eureka:
+  server:
+    maxThreadsForPeerReplication: 0
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:9092/eureka/ #eureka2

@@ -1,0 +1,62 @@
+server:
+  port: 8082
+
+propery_owner: 'local property local'
+
+spring:
+  application:
+    name: msa-service-coffee-order
+  h2:
+    console:
+      enabled: true
+      path: /h2console
+  datasource:
+    driver-class-name: org.h2.Driver
+    #url: jdbc:h2:file:~/h2/msa-service-coffee-order
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+      #ddl-auto: update
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: 'msa-architecture-server-config'
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'hystrix.stream'
+
+#Eureka Client   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
+    enabled: true
+  instance:
+    preferIpAddress: true
+    instance-id:
+
+logging:
+  path: logs
+  level:
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+    com.hoony.msa.order.system.: DEBUG
+    com.hoony.msa.order.springboot: DEBUG

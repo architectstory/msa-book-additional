@@ -1,0 +1,5 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-actuator:2.1.7.RELEASE'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.1.2.RELEASE'
+}

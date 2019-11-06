@@ -1,0 +1,39 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: msa-service-coffee-member
+  h2:
+    console:
+      enabled: true
+      path: /h2console
+  datasource:
+    driver-class-name: org.h2.Driver
+    #url: jdbc:h2:file:~/h2/msa-service-coffee-member
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: 'msa-architecture-server-config' #update -> curl -X POST http://localhost:8081/actuator/refresh
+
+#Eureka Client   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
+    enabled: true
+  instance:
+    preferIpAddress: true
+    instance-id:
+
+logging:
+  path: logs
+  level:
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+    com.hoony.msa.member.system.: DEBUG
+    com.hoony.msa.member.springboot: DEBUG
