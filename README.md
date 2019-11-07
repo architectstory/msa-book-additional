@@ -1,6 +1,7 @@
 ## mas-book additional
 
-   'msa-book' 소스코드를 보완
+   '자바 기반 마이크로서비스의 이해와 아키텍처 구축하기'의
+   소스 코드(msa-book)를 보완
 
    1. 최근 버전 '라이브러리' 반영
    2. 'Kafka' -> 'RabbitMQ'
